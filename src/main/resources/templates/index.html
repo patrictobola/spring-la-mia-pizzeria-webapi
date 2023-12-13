@@ -9,7 +9,7 @@
 
 <body>
 	<header>
-		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+		<div th:replace="~{fragments/navbar-fragment :: navbar}"></div>
 	</header>
 
 	<h1 th:if="${pizzas.size() == 0}" class="text-center mt-5">NON CI SONO PIZZE!</h1>

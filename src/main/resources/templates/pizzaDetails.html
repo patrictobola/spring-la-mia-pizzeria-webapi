@@ -9,7 +9,7 @@
 
 <body>
 	<header>
-		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+		<div th:replace="~{fragments/navbar-fragment :: navbar}"></div>
 	</header>
 	<div class="container text-center mt-5">
 		<h1 th:text="${pizza.name}">Pizza Name</h1>

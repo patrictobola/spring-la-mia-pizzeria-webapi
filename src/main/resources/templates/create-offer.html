@@ -9,7 +9,7 @@
 
 <body>
 	<header>
-		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+		<div th:replace="~{fragments/navbar-fragment :: navbar}"></div>
 	</header>
 	<div class="container">
 		<h1 class="text-center" th:if="${discount}">Modifica offerta</h1>

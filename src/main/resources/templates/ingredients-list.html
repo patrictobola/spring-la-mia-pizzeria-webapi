@@ -9,7 +9,7 @@
 
 <body>
 	<header>
-		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+		<div th:replace="~{fragments/navbar-fragment :: navbar}"></div>
 	</header>
 	<div class="container">
 		<h1 class="text-center">Lista degli ingredienti</h1>
@@ -17,14 +17,14 @@
 			<li th:each="ingredient : ${ingredients}" th:object="${ingredient}"
 				class="list-group-item d-flex justify-content-between">
 				[[*{name}]]
-				<a class="btn btn-danger" th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}">DELETE</a>
+				<a class="btn btn-danger" sec:authorize="hasAuthority('ADMIN')" th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}">DELETE</a>
 			</li>
 
 		</ul>
 		<div class="d-flex justify-content-between mt-5">
 			<a th:href="@{/}" class="btn btn-warning">Main menu</a>
 		</div>
-		<form th:object="${ingredient}" th:action="@{/ingredients/save}" method="post">
+		<form sec:authorize="hasAuthority('ADMIN')" th:object="${ingredient}" th:action="@{/ingredients/save}" method="post">
 			<label id="name" class="form-label">Inserisci nuovo ingrediente</label>
 			<input type="text" name="name" id="name" class="form-control" th:field="*{name}">
 			<button th:href="@{/}" class="btn btn-success mt-3">New ingrediente!</button>
