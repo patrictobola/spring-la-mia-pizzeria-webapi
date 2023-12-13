@@ -103,12 +103,10 @@ public class Pizza {
 	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
-	@JsonIgnore
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
 	}
-	@JsonIgnore
-	public void setIngredients(Ingredient... ingredients) {
+	private void setIngredients(Ingredient... ingredients) {
 		setIngredients(Arrays.asList(ingredients));
 	}
 

@@ -27,12 +27,21 @@ public class Ingredient {
 	@JsonIgnore
 	private List<Pizza> pizzas;
 
-    @PreRemove
+	@PreRemove
     private void removeIngredientFromPizzas() {
         for (Pizza pizza : pizzas) {
             pizza.getIngredients().remove(this);
         }
     }
+	
+	
+	
+	public List<Pizza> getPizzas() {
+		return pizzas;
+	}
+	public void setPizzas(List<Pizza> pizzas) {
+		this.pizzas = pizzas;
+	}
 	public Ingredient() {	
 		
 	}
@@ -51,14 +60,6 @@ public class Ingredient {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public List<Pizza> getPizza() {
-		return pizzas;
-	}
-
-	public void setPizza(List<Pizza> pizzas) {
-		this.pizzas = pizzas;
 	}
 
 	
