@@ -1,5 +1,7 @@
 package org.java.spring.db.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class Discount {
 	private String name;
 
 	@ManyToOne
+	@JsonIgnore
 	private Pizza pizza;
 	
 	public Discount() {
