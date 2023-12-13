@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,5 +27,11 @@ public class PizzaRestController {
 		List<Pizza> pizzas = pizzaService.findAll();
 		
 		return new ResponseEntity<>(pizzas, HttpStatus.OK);
+	}
+	@GetMapping("{id}")
+	public ResponseEntity<Pizza> getPizza(@PathVariable int id){
+		Pizza pizza = pizzaService.findById(id);
+		if (pizza == null) return new ResponseEntity<>(pizza, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(pizza, HttpStatus.OK);
 	}
 }
