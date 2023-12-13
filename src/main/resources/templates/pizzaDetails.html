@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pizza Details</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<header>
+		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+	</header>
+	<div class="container text-center mt-5">
+		<h1 th:text="${pizza.name}">Pizza Name</h1>
+		<p>
+			<span>Ingredienti: </span>
+			<span th:text="${pizza.description}">Pizza Description</span>
+		</p>
+		<p>
+			<span>Prezzo: </span>
+			<span th:text="${pizza.price}">Pizza Price</span>
+		</p>
+		<img th:src="${pizza.photo}" alt="Pizza Photo">
+		<div class="pb-5"></div>
+		<ul>
+			<li th:each="offer : ${pizza.offers}">
+				<span th:text="${offer.name}"></span>
+				<a th:href="@{'/pizza/discount/edit/' + ${offer.id}}" sec:authorize="hasAuthority('ADMIN')"
+					class="btn btn-warning btn-sm">Edit</a>
+				<hr />
+			</li>
+		</ul>
+		<div th:if="*{pizza.ingredients.size() > 0}">
+			<h4>Ingredienti</h4>
+			<ul>
+				<li th:each="ingredient : *{pizza.ingredients}" th:object="${ingredient}">
+					[[*{name}]] <br>
+				</li>
+			</ul>
+		</div>
+		<a href="/" class="btn btn-primary">Back to main menu</a>
+		<a th:href="@{/pizza/discount}" sec:authorize="hasAuthority('ADMIN')" class="btn btn-primary">Create a new
+			offer</a>
+	</div>
+</body>
+
+</html>

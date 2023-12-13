@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Lista degli ingredienti</title>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+</head>
+
+<body>
+	<header>
+		<div th:replace="fragments/navbar-fragment :: navbar"></div>
+	</header>
+	<div class="container">
+		<h1 class="text-center">Lista degli ingredienti</h1>
+		<ul class="list-group">
+			<li th:each="ingredient : ${ingredients}" th:object="${ingredient}"
+				class="list-group-item d-flex justify-content-between">
+				[[*{name}]]
+				<a class="btn btn-danger" th:href="@{/ingredients/delete/{id}(id=${ingredient.id})}">DELETE</a>
+			</li>
+
+		</ul>
+		<div class="d-flex justify-content-between mt-5">
+			<a th:href="@{/}" class="btn btn-warning">Main menu</a>
+		</div>
+		<form th:object="${ingredient}" th:action="@{/ingredients/save}" method="post">
+			<label id="name" class="form-label">Inserisci nuovo ingrediente</label>
+			<input type="text" name="name" id="name" class="form-control" th:field="*{name}">
+			<button th:href="@{/}" class="btn btn-success mt-3">New ingrediente!</button>
+		</form>
+	</div>
+</body>
+
+</html>
