@@ -8,6 +8,8 @@
         </router-link>
       </li>
     </ul>
+    <router-link :to="{ name: 'CreatePizza' }">Create a new Pizza bro!
+    </router-link>
   </div>
 </template>
 
