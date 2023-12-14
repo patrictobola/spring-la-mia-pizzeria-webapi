@@ -1,9 +1,12 @@
 <script setup>
 import Index from './components/index.vue'
+
 </script>
 
 <template>
-  <index msg="This fantastic pizza index!" />
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style scoped></style>

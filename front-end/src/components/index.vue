@@ -1,5 +1,17 @@
+<template>
+  <div>
+    <h2>List of all pizzas:</h2>
+    <ul>
+      <li v-for="pizza in pizzas" :key="pizza.id">
+        <router-link :to="{ name: 'pizza-detail', params: { id: pizza.id } }">
+          {{ pizza.name }}
+        </router-link>
+      </li>
+    </ul>
+  </div>
+</template>
+
 <script>
-import { ref } from 'vue'
 export default {
   data() {
     return {
@@ -21,23 +33,4 @@ export default {
     },
   },
 };
-
-// defineProps({
-//   msg: String,
-
-// })
 </script>
-
-<template>
-  <!-- <h1>{{ msg }}</h1> -->
-  <div>
-    <h2>List of all pizzas:</h2>
-    <ul>
-      <li v-for="pizza in pizzas" :key="pizza.id">
-        {{ pizza.name }}
-      </li>
-    </ul>
-  </div>
-</template>
-
-<style scoped></style>
