@@ -26,7 +26,7 @@ export default {
             try {
                 const pizzaId = this.$route.params.id;
                 console.log(pizzaId)
-                const response = await fetch('http://localhost:8080/api/pizzas/' + pizzaId);
+                const response = await fetch(`http://localhost:8080/api/pizzas/${pizzaId}`);
                 const pizza = await response.json();
                 this.pizza = pizza;
             } catch (error) {
